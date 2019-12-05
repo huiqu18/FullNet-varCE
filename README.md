@@ -62,8 +62,14 @@ datasets.
 The steps to prepare these files are:
 * Download the gland dataset ([link](https://warwick.ac.uk/fac/sci/dcs/research/tia/glascontest/download/)) or the
 Multi-Organ dataset ([link](https://nucleisegmentationbenchmark.weebly.com/dataset.html))
+  
+  **Note**: I just found that the authors of the Multi-Organ dataset replaced some images in the dataset
+in September 2019. Therefore the current dataset is different from what I used for experiments. As a result,
+we put the original dataset [here](https://drive.google.com/drive/folders/1LQQIGLNg5vMELtLD4UJdDT2OjTMZMlcn?usp=sharing) 
+(`Tissue Images.zip` and `Annotations.zip`) for your reference. The color normalized images and instance labels are also included in the folder. In the instance 
+labels, each pixel belongs to exactly one nucleus. We didn't consider the overlapped parts during experiments.
 
-* For MultiOrgan dataset, generate the instance labels by revising the .xml annotation files. Use uint16 instead of 
+* For MultiOrgan dataset, generate the instance labels from the .xml annotation files. Use uint16 instead of 
 uint8 to assign a unique integer for each nucleus.
 
 * Generate the ternary label from each instance label using `create_ternary_labels` method in `prepare_data.py`.
